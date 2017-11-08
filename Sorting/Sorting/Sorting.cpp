@@ -58,9 +58,8 @@ void QuickSort_Sort(int *arr, int length)
     QuickSort_MainProc(arr, 0, length-1);
 }
 
-#define LENGTH      7
-
-int a[LENGTH] = { 5, 6, 0, 19, 23, 8, 11};
+#define LENGTH      8
+int a[LENGTH] = {1,53,2,3,5,7,8,6};
 
 int main()
 {
@@ -147,20 +146,27 @@ void MergeSort_Split(int *arr, int ElementCnt)
 void MergeSort_Merge(int *arr, int *LBuf, int *RBuf, int LCnt, int RCnt)
 {
     int s32LeftIdx = 0, s32RightIdx = 0;
+    int i = 0;
 
-    for(int i=0; i<(LCnt+RCnt); i++)
+    while(s32LeftIdx<LCnt && s32RightIdx<RCnt)
     {
-        if( (LBuf[s32LeftIdx] < RBuf[s32RightIdx]) && s32LeftIdx < LCnt)
+        if(LBuf[s32LeftIdx] < RBuf[s32RightIdx])
         {
             *(arr+i) = LBuf[s32LeftIdx];
+            i++;
             s32LeftIdx++;
         }
         else
         {
             *(arr+i) = RBuf[s32RightIdx];
+            i++;
             s32RightIdx++;
         }
 
     }
 
+    while(s32LeftIdx<LCnt)
+        *(arr+(i++)) = LBuf[s32LeftIdx++];
+    while(s32RightIdx<RCnt)
+        *(arr+(i++)) = RBuf[s32RightIdx++];
 }
