@@ -12,7 +12,7 @@ void MergeSort_Split(int *arr, int ElementCnt)
 {
 	//printf("start = %d, end = %d\n", start, end);
 	if (ElementCnt < 2)
-		return;
+		return; 
 
 	int mid = ElementCnt / 2;
 	int *LBuf = NULL;
